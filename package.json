@@ -1,8 +1,8 @@
 {
-  "name": "robofriends-pwa",
+  "name": "robofriends",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://theale27.github.io/robofriends-pwa",
+  "homepage": "https://theale27.github.io/robofriends",
   "dependencies": {
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
