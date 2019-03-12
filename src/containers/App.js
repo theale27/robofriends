@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { setSearchField, requestRobots } from "../actions";
+
 import CardList from "../components/CardList";
 import SearchBox from "../components/SearchBox";
 import Scroll from "../components/Scroll";
-import "./App.css";
+import ErrorBoundry from "../components/ErrorBoundry";
+import Header from "../components/Header";
 
-import { setSearchField, requestRobots } from "../actions";
+import "./App.css";
 
 const mapStateToProps = state => {
   return {
     searchField: state.searchRobots.searchField,
     robots: state.requestRobots.robots,
-    isPending: state.requestRobots.isPending,
-    error: state.requestRobots.error
+    isPending: state.requestRobots.isPending
   };
 };
 
@@ -33,19 +35,18 @@ class App extends Component {
     const filteredRobots = robots.filter(robot => {
       return robot.name.toLowerCase().includes(searchField.toLowerCase());
     });
-
-    console.log("HI", robots);
-    console.log("HI", searchField);
-    console.log("HI", filteredRobots);
-    //Ternary - If there's no robots
-    return isPending ? (
-      <h1>Loading</h1>
-    ) : (
+    return (
       <div className="tc">
-        <h1 className="f2">RoboFriends</h1>
+        <h1 className="f1">RoboFriends</h1>
         <SearchBox searchChange={onSearchChange} />
         <Scroll>
-          <CardList robots={filteredRobots} />
+          {isPending ? (
+            <h1>Loading</h1>
+          ) : (
+            <ErrorBoundry>
+              <CardList robots={filteredRobots} />
+            </ErrorBoundry>
+          )}
         </Scroll>
       </div>
     );
