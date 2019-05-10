@@ -4,4 +4,4 @@ React Progressive Web App created during the Udemy [ZtM course](https://www.udem
 
 Available to view on my [github page](https://theale27.github.io/robofriends/)
 
-Technologies used: HTML, CSS, JS, React
+Technologies used: HTML, CSS, JavaScript, React
